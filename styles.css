@@ -182,7 +182,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .nav__links {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
+  gap: 1.5rem;
 }
 .nav__links li a {
   font-size: 0.8rem;
