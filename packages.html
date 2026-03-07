@@ -1,985 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Packages & Rates – Ponderosa Events Place</title>
-  <link rel="icon" type="image/x-icon" href="img/logo.ico" />
-  <meta name="description" content="View all event packages at Ponderosa Events Place – Embracive, All-in, and Venue-Only rates for your wedding, debut, birthday, or corporate event in Binangonan, Rizal." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="packages.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Packages & Rates – Ponderosa Events Place</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.ico" />
+    <meta name="description" content="View all event packages at Ponderosa Events Place – Embracive, All-in, and Venue-Only rates for your wedding, debut, birthday, or corporate event in Binangonan, Rizal." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="packages.css" />
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <header id="site-header" class="scrolled">
-    <nav class="nav container">
-      <a href="index.html" class="nav__logo">
-        <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img" />
-      </a>
-      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+    <!-- NAV -->
+    <header id="site-header" class="scrolled">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img" />
+            </a>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav__links" id="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#venues">Venues</a></li>
-        <li><a href="index.html#events">Events</a></li>
-        <li><a href="packages.html" class="active-page">Packages</a></li>
-        <li><a href="index.html#gallery">Gallery</a></li>
-        <li><a href="contact.html" class="nav__cta">Book Now</a></li>
-      </ul>
-    </nav>
-  </header>
+            <ul class="nav__links" id="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#venues">Venues</a></li>
+                <li><a href="index.html#events">Events</a></li>
+                <li><a href="packages.html" class="active-page">Packages</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="contact.html" class="nav__cta">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- PAGE HERO -->
-  <section class="pkg-hero">
-    <div class="pkg-hero__overlay"></div>
-    <div class="pkg-hero__content container">
-      <span class="section-label section-label--light">Tailored for Every Celebration</span>
-      <h1>Packages &amp; Rates</h1>
-      <p>From all-inclusive bundles to venue-only bookings — find the perfect fit for your event.</p>
-    </div>
-  </section>
+    <!-- PAGE HERO -->
+    <section class="pkg-hero">
+        <div class="pkg-hero__overlay"></div>
+        <div class="pkg-hero__content container">
+            <span class="section-label section-label--light">Tailored for Every Celebration</span>
+            <h1>Packages &amp; Rates</h1>
+            <p>From all-inclusive bundles to venue-only bookings — find the perfect fit for your event.</p>
+        </div>
+    </section>
 
-  <!-- CATEGORY TABS -->
-  <div class="pkg-tabs-bar">
-    <div class="container">
-      <div class="pkg-tabs" role="tablist">
-        <button class="pkg-tab active" data-tab="embracive" role="tab" aria-selected="true">
+    <!-- CATEGORY TABS -->
+    <div class="pkg-tabs-bar">
+        <div class="container">
+            <div class="pkg-tabs" role="tablist">
+                <button class="pkg-tab active" data-tab="embracive" role="tab" aria-selected="true">
           <span class="pkg-tab__label">Embracive</span>
           <span class="pkg-tab__sub">Most Inclusive</span>
         </button>
-        <button class="pkg-tab" data-tab="allin" role="tab" aria-selected="false">
+                <button class="pkg-tab" data-tab="allin" role="tab" aria-selected="false">
           <span class="pkg-tab__label">All-in</span>
           <span class="pkg-tab__sub">Great Value</span>
         </button>
-        <button class="pkg-tab" data-tab="venue" role="tab" aria-selected="false">
+                <button class="pkg-tab" data-tab="venue" role="tab" aria-selected="false">
           <span class="pkg-tab__label">Venue Only</span>
           <span class="pkg-tab__sub">Bring Your Own</span>
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- ============================================================
+    <!-- ============================================================
        EMBRACIVE PACKAGES
   ============================================================ -->
-  <section id="tab-embracive" class="pkg-section tab-panel active">
-    <div class="container">
+    <section id="tab-embracive" class="pkg-section tab-panel active">
+        <div class="container">
 
-      <div class="pkg-category-intro">
-        <h2>Embracive Packages</h2>
-        <p>A seamless blend of venue, lights &amp; sound, catering, photo &amp; video, on-the-day coordination, charismatic hosting, and professional hair &amp; makeup services. The ultimate all-inclusive offering for an unforgettable, effortlessly orchestrated celebration.</p>
-      </div>
+            <div class="pkg-category-intro">
+                <h2>Embracive Packages</h2>
+                <p>A seamless blend of venue, lights &amp; sound, catering, photo &amp; video, on-the-day coordination, charismatic hosting, and professional hair &amp; makeup services. The ultimate all-inclusive offering for an unforgettable, effortlessly
+                    orchestrated celebration.</p>
+            </div>
 
-      <!-- What's included banner -->
-      <div class="pkg-includes-banner">
-        <span>All Embracive packages include:</span>
-        <div class="pkg-includes-tags">
-          <span>Venue</span>
-          <span>Catering</span>
-          <span>Lights &amp; Sound</span>
-          <span>Photo &amp; Video</span>
-          <span>Coordination</span>
-          <span>Professional Host</span>
-          <span>Hair &amp; Make-up</span>
+            <!-- What's included banner -->
+            <div class="pkg-includes-banner">
+                <span>All Embracive packages include:</span>
+                <div class="pkg-includes-tags">
+                    <span>Venue</span>
+                    <span>Catering</span>
+                    <span>Lights &amp; Sound</span>
+                    <span>Photo &amp; Video</span>
+                    <span>Coordination</span>
+                    <span>Professional Host</span>
+                    <span>Hair &amp; Make-up</span>
+                </div>
+            </div>
+
+            <div class="pkg-grid pkg-grid--3">
+
+                <!-- 170k -->
+                <article class="pkg-card">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>170,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 1</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
+
+                    <div class="pkg-card__body">
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Hall 1
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Hall 1</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>1 Complimentary Bride Suite</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers</li>
+                                <li>Glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water</li>
+                                <li>Uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg> Photo &amp; Video
+                            </h4>
+                            <ul>
+                                <li>On-the-day photo &amp; video coverage</li>
+                                <li>Edited soft copy with USB</li>
+                                <li>Free prenup photo shoot (soft copy)</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg> Other Inclusions
+                            </h4>
+                            <ul>
+                                <li>Basic backdrop and couch</li>
+                                <li>Red carpet / grass carpet</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg> On-the-Day Coordination
+                            </h4>
+                            <ul>
+                                <li>Venue meeting 2–4 weeks before event</li>
+                                <li>Full event schedule &amp; coordination plan</li>
+                                <li>Supplier confirmations in advance</li>
+                                <li>Ongoing pre-wedding support</li>
+                                <li>Full wedding day coordination</li>
+                                <li>Discreet handling of any eventualities</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg> Professional Host
+                            </h4>
+                            <ul>
+                                <li>One meeting to discuss flow of program</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg> Hair &amp; Make-up
+                            </h4>
+                            <ul>
+                                <li>Make-up &amp; hair for Bride + 2 female heads</li>
+                                <li>FREE airbrush upgrade for Bride + 2 female heads</li>
+                                <li>UNLIMITED retouch for Bride until church</li>
+                                <li>FREE retouch kit for Bride + 2 female heads</li>
+                                <li>FREE grooming for the Groom</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- end pkg-card__body -->
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+                <!-- 180k -->
+                <article class="pkg-card pkg-card--featured">
+                    <div class="pkg-card__badge">Popular</div>
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>180,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 2</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
+
+                    <div class="pkg-card__body">
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Hall 2
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Hall 2</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li><strong>2 Preparation Suites</strong> (Bride &amp; Groom)</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers</li>
+                                <li>Glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water</li>
+                                <li>Uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg> Photo &amp; Video
+                            </h4>
+                            <ul>
+                                <li>On-the-day photo &amp; video coverage</li>
+                                <li>Edited soft copy with USB</li>
+                                <li>Free prenup photo shoot (soft copy)</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg> Other Inclusions
+                            </h4>
+                            <ul>
+                                <li>Basic backdrop and couch</li>
+                                <li>Red carpet / grass carpet</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg> On-the-Day Coordination
+                            </h4>
+                            <ul>
+                                <li>Venue meeting 2–4 weeks before event</li>
+                                <li>Full event schedule &amp; coordination plan</li>
+                                <li>Supplier confirmations in advance</li>
+                                <li>Ongoing pre-wedding support</li>
+                                <li>Full wedding day coordination</li>
+                                <li>Discreet handling of any eventualities</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg> Professional Host
+                            </h4>
+                            <ul>
+                                <li>One meeting to discuss flow of program</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg> Hair &amp; Make-up
+                            </h4>
+                            <ul>
+                                <li>Make-up &amp; hair for Bride + 2 female heads</li>
+                                <li>FREE airbrush upgrade for Bride + 2 female heads</li>
+                                <li>UNLIMITED retouch for Bride until church</li>
+                                <li>FREE retouch kit for Bride + 2 female heads</li>
+                                <li>FREE grooming for the Groom</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+                <!-- 190k -->
+                <article class="pkg-card">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>190,000
+                        </div>
+                        <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
+
+                    <div class="pkg-card__body">
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Bienvenido Hall
+                            </h4>
+                            <ul>
+                                <li>5 hours use of <strong>Bienvenido Hall</strong></li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li><strong>2 Preparation Suites</strong> (Bride &amp; Groom)</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers</li>
+                                <li>Glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water</li>
+                                <li>Uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg> Photo &amp; Video
+                            </h4>
+                            <ul>
+                                <li>On-the-day photo &amp; video coverage</li>
+                                <li>Edited soft copy with USB</li>
+                                <li>Free prenup photo shoot (soft copy)</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg> Other Inclusions
+                            </h4>
+                            <ul>
+                                <li>Basic backdrop and couch</li>
+                                <li>Red carpet / grass carpet</li>
+                            </ul>
+                        </div>
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg> On-the-Day Coordination <span class="pkg-upgraded">Upgraded</span>
+                            </h4>
+                            <ul>
+                                <li>Head Planner</li>
+                                <li>Bride Manager &amp; Groom Manager</li>
+                                <li>Senior Coordinator</li>
+                                <li>Bridal Emergency Kit</li>
+                                <li>Basic Registration Setup</li>
+                                <li>Prep, Ceremony &amp; Reception Coordination</li>
+                                <li>Venue meeting 2–4 weeks before event</li>
+                                <li>FREE Consultations</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg> Professional Host
+                            </h4>
+                            <ul>
+                                <li>One meeting to discuss flow of program</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg> Hair &amp; Make-up
+                            </h4>
+                            <ul>
+                                <li>Make-up &amp; hair for Bride + 2 female heads</li>
+                                <li>UNLIMITED retouch for Bride until church</li>
+                                <li>FREE retouch kit for Bride (second look)</li>
+                                <li>FREE grooming for the Groom</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+            </div>
+            <!-- end pkg-grid -->
         </div>
-      </div>
+    </section>
 
-      <div class="pkg-grid pkg-grid--3">
-
-        <!-- 170k -->
-        <article class="pkg-card">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>170,000
-            </div>
-            <div class="pkg-card__tag">Hall 1</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
-
-          <div class="pkg-card__body">
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Hall 1
-              </h4>
-              <ul>
-                <li>5 hours use of Hall 1</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>1 Complimentary Bride Suite</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers</li>
-                <li>Glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water</li>
-                <li>Uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg>
-                Photo &amp; Video
-              </h4>
-              <ul>
-                <li>On-the-day photo &amp; video coverage</li>
-                <li>Edited soft copy with USB</li>
-                <li>Free prenup photo shoot (soft copy)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg>
-                Other Inclusions
-              </h4>
-              <ul>
-                <li>Basic backdrop and couch</li>
-                <li>Red carpet / grass carpet</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg>
-                On-the-Day Coordination
-              </h4>
-              <ul>
-                <li>Venue meeting 2–4 weeks before event</li>
-                <li>Full event schedule &amp; coordination plan</li>
-                <li>Supplier confirmations in advance</li>
-                <li>Ongoing pre-wedding support</li>
-                <li>Full wedding day coordination</li>
-                <li>Discreet handling of any eventualities</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg>
-                Professional Host
-              </h4>
-              <ul><li>One meeting to discuss flow of program</li></ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg>
-                Hair &amp; Make-up
-              </h4>
-              <ul>
-                <li>Make-up &amp; hair for Bride + 2 female heads</li>
-                <li>FREE airbrush upgrade for Bride + 2 female heads</li>
-                <li>UNLIMITED retouch for Bride until church</li>
-                <li>FREE retouch kit for Bride + 2 female heads</li>
-                <li>FREE grooming for the Groom</li>
-              </ul>
-            </div>
-
-          </div><!-- end pkg-card__body -->
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-        <!-- 180k -->
-        <article class="pkg-card pkg-card--featured">
-          <div class="pkg-card__badge">Popular</div>
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>180,000
-            </div>
-            <div class="pkg-card__tag">Hall 2</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
-
-          <div class="pkg-card__body">
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Hall 2
-              </h4>
-              <ul>
-                <li>5 hours use of Hall 2</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li><strong>2 Preparation Suites</strong> (Bride &amp; Groom)</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers</li>
-                <li>Glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water</li>
-                <li>Uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg>
-                Photo &amp; Video
-              </h4>
-              <ul>
-                <li>On-the-day photo &amp; video coverage</li>
-                <li>Edited soft copy with USB</li>
-                <li>Free prenup photo shoot (soft copy)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg>
-                Other Inclusions
-              </h4>
-              <ul>
-                <li>Basic backdrop and couch</li>
-                <li>Red carpet / grass carpet</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg>
-                On-the-Day Coordination
-              </h4>
-              <ul>
-                <li>Venue meeting 2–4 weeks before event</li>
-                <li>Full event schedule &amp; coordination plan</li>
-                <li>Supplier confirmations in advance</li>
-                <li>Ongoing pre-wedding support</li>
-                <li>Full wedding day coordination</li>
-                <li>Discreet handling of any eventualities</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg>
-                Professional Host
-              </h4>
-              <ul><li>One meeting to discuss flow of program</li></ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg>
-                Hair &amp; Make-up
-              </h4>
-              <ul>
-                <li>Make-up &amp; hair for Bride + 2 female heads</li>
-                <li>FREE airbrush upgrade for Bride + 2 female heads</li>
-                <li>UNLIMITED retouch for Bride until church</li>
-                <li>FREE retouch kit for Bride + 2 female heads</li>
-                <li>FREE grooming for the Groom</li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-        <!-- 190k -->
-        <article class="pkg-card">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>190,000
-            </div>
-            <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
-
-          <div class="pkg-card__body">
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Bienvenido Hall
-              </h4>
-              <ul>
-                <li>5 hours use of <strong>Bienvenido Hall</strong></li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li><strong>2 Preparation Suites</strong> (Bride &amp; Groom)</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers</li>
-                <li>Glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water</li>
-                <li>Uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg>
-                Photo &amp; Video
-              </h4>
-              <ul>
-                <li>On-the-day photo &amp; video coverage</li>
-                <li>Edited soft copy with USB</li>
-                <li>Free prenup photo shoot (soft copy)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2L12 7H17L13 10L15 15L10 12L5 15L7 10L3 7H8Z"/></svg>
-                On-the-Day Coordination <span class="pkg-upgraded">Upgraded</span>
-              </h4>
-              <ul>
-                <li>Head Planner</li>
-                <li>Bride Manager &amp; Groom Manager</li>
-                <li>Senior Coordinator</li>
-                <li>Bridal Emergency Kit</li>
-                <li>Basic Registration Setup</li>
-                <li>Prep, Ceremony &amp; Reception Coordination</li>
-                <li>Venue meeting 2–4 weeks before event</li>
-                <li>FREE Consultations</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="6" r="3"/><path d="M4 18C4 14.69 6.69 12 10 12C13.31 12 16 14.69 16 18"/></svg>
-                Professional Host
-              </h4>
-              <ul><li>One meeting to discuss flow of program</li></ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3C8 3 6 5 6 7C6 9 7 10.5 8.5 11.5M14 7C14 9 12.5 11 10.5 11.5M10 12V17M7 17H13"/></svg>
-                Hair &amp; Make-up
-              </h4>
-              <ul>
-                <li>Make-up &amp; hair for Bride + 2 female heads</li>
-                <li>UNLIMITED retouch for Bride until church</li>
-                <li>FREE retouch kit for Bride (second look)</li>
-                <li>FREE grooming for the Groom</li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-      </div><!-- end pkg-grid -->
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        ALL-IN PACKAGES
   ============================================================ -->
-  <section id="tab-allin" class="pkg-section tab-panel">
-    <div class="container">
+    <section id="tab-allin" class="pkg-section tab-panel">
+        <div class="container">
 
-      <div class="pkg-category-intro">
-        <h2>All-in Packages</h2>
-        <p>The epitome of convenience — a comprehensive offering that combines venue, lights &amp; sound, catering, and photo &amp; video services. Every detail meticulously taken care of for a memorable celebration.</p>
-      </div>
+            <div class="pkg-category-intro">
+                <h2>All-in Packages</h2>
+                <p>The epitome of convenience — a comprehensive offering that combines venue, lights &amp; sound, catering, and photo &amp; video services. Every detail meticulously taken care of for a memorable celebration.</p>
+            </div>
 
-      <div class="pkg-includes-banner">
-        <span>All All-in packages include:</span>
-        <div class="pkg-includes-tags">
-          <span>Venue</span>
-          <span>Catering</span>
-          <span>Lights &amp; Sound</span>
-          <span class="pkg-tag--muted">Photo &amp; Video <em>(144k only)</em></span>
+            <div class="pkg-includes-banner">
+                <span>All All-in packages include:</span>
+                <div class="pkg-includes-tags">
+                    <span>Venue</span>
+                    <span>Catering</span>
+                    <span>Lights &amp; Sound</span>
+                    <span class="pkg-tag--muted">Photo &amp; Video <em>(144k only)</em></span>
+                </div>
+            </div>
+
+            <div class="pkg-grid pkg-grid--3">
+
+                <!-- 75k -->
+                <article class="pkg-card">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>75,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 1</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>50 persons</strong></div>
+
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Hall 1
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Hall 1</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers, glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water, uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+                <!-- 105k -->
+                <article class="pkg-card pkg-card--featured">
+                    <div class="pkg-card__badge">Popular</div>
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>105,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 1</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
+
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Hall 1
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Hall 1</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers, glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water, uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+                <!-- 144k -->
+                <article class="pkg-card">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>144,000
+                        </div>
+                        <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
+                    </div>
+                    <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
+
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Venue – Bienvenido Hall
+                            </h4>
+                            <ul>
+                                <li>5 hours use of <strong>Bienvenido Hall</strong></li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>1 Complimentary Bride Suite</li>
+                                <li>Pantry for food preps</li>
+                                <li>Modular Platform / Stage</li>
+                                <li>Air Purifiers / Humidifiers</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>                                Catering
+                            </h4>
+                            <ul>
+                                <li>Standard buffet setup with skirting &amp; centerpiece</li>
+                                <li>Table numbers, cake &amp; gifts table</li>
+                                <li>Stainless food warmers, glassware &amp; tableware</li>
+                                <li>Table napkins</li>
+                                <li>Round tables arranged per motif</li>
+                                <li>Monoblock chairs with seat cover &amp; bow accents</li>
+                                <li>Purified drinking water, uniformed waiters</li>
+                            </ul>
+                            <div class="pkg-menu">
+                                <span class="pkg-menu-label">Menu</span>
+                                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
+                            </div>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg> Lights &amp; Sound
+                            </h4>
+                            <ul class="pkg-list--2col">
+                                <li>2 Active Speakers + stands</li>
+                                <li>2 Wireless + 2 Wired Mics</li>
+                                <li>Audio Mixer &amp; Laptop</li>
+                                <li>4 LED Stage Backdrop lights</li>
+                                <li>2 Amber White Frontals</li>
+                                <li>8 Mood Lights</li>
+                                <li>DMX Light Controller</li>
+                                <li>Smoke Machine</li>
+                                <li>Projector (3500 lumens)</li>
+                                <li>8×8 Wide Screen</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg> Photo &amp; Video
+                            </h4>
+                            <ul>
+                                <li>On-the-day photo &amp; video coverage</li>
+                                <li>Edited soft copy with USB</li>
+                                <li>Free prenup photo shoot (soft copy)</li>
+                            </ul>
+                        </div>
+
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg> Other Inclusions
+                            </h4>
+                            <ul>
+                                <li>Basic backdrop and couch</li>
+                                <li>Red carpet / grass carpet</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="pkg-grid pkg-grid--3">
-
-        <!-- 75k -->
-        <article class="pkg-card">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>75,000
-            </div>
-            <div class="pkg-card__tag">Hall 1</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>50 persons</strong></div>
-
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Hall 1
-              </h4>
-              <ul>
-                <li>5 hours use of Hall 1</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers, glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water, uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-        <!-- 105k -->
-        <article class="pkg-card pkg-card--featured">
-          <div class="pkg-card__badge">Popular</div>
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>105,000
-            </div>
-            <div class="pkg-card__tag">Hall 1</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
-
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Hall 1
-              </h4>
-              <ul>
-                <li>5 hours use of Hall 1</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers, glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water, uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-        <!-- 144k -->
-        <article class="pkg-card">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>144,000
-            </div>
-            <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
-          </div>
-          <div class="pkg-card__pax">Good for <strong>100 persons</strong></div>
-
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Venue – Bienvenido Hall
-              </h4>
-              <ul>
-                <li>5 hours use of <strong>Bienvenido Hall</strong></li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>1 Complimentary Bride Suite</li>
-                <li>Pantry for food preps</li>
-                <li>Modular Platform / Stage</li>
-                <li>Air Purifiers / Humidifiers</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2C7 2 4 5 4 8.5C4 13 10 18 10 18C10 18 16 13 16 8.5C16 5 13 2 10 2ZM10 11C8.34 11 7 9.66 7 8C7 6.34 8.34 5 10 5C11.66 5 13 6.34 13 8C13 9.66 11.66 11 10 11Z"/></svg>
-                Catering
-              </h4>
-              <ul>
-                <li>Standard buffet setup with skirting &amp; centerpiece</li>
-                <li>Table numbers, cake &amp; gifts table</li>
-                <li>Stainless food warmers, glassware &amp; tableware</li>
-                <li>Table napkins</li>
-                <li>Round tables arranged per motif</li>
-                <li>Monoblock chairs with seat cover &amp; bow accents</li>
-                <li>Purified drinking water, uniformed waiters</li>
-              </ul>
-              <div class="pkg-menu">
-                <span class="pkg-menu-label">Menu</span>
-                <span>Pork · Chicken · Fish Fillet · Pasta · Rice · Dessert · Juice · 2-Layer Cake</span>
-              </div>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><path d="M7 10L9 12L13 8"/></svg>
-                Lights &amp; Sound
-              </h4>
-              <ul class="pkg-list--2col">
-                <li>2 Active Speakers + stands</li>
-                <li>2 Wireless + 2 Wired Mics</li>
-                <li>Audio Mixer &amp; Laptop</li>
-                <li>4 LED Stage Backdrop lights</li>
-                <li>2 Amber White Frontals</li>
-                <li>8 Mood Lights</li>
-                <li>DMX Light Controller</li>
-                <li>Smoke Machine</li>
-                <li>Projector (3500 lumens)</li>
-                <li>8×8 Wide Screen</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="16" height="12" rx="2"/><circle cx="10" cy="10" r="3"/><circle cx="15" cy="6" r="1"/></svg>
-                Photo &amp; Video
-              </h4>
-              <ul>
-                <li>On-the-day photo &amp; video coverage</li>
-                <li>Edited soft copy with USB</li>
-                <li>Free prenup photo shoot (soft copy)</li>
-              </ul>
-            </div>
-
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6H16M4 10H12M4 14H9"/></svg>
-                Other Inclusions
-              </h4>
-              <ul>
-                <li>Basic backdrop and couch</li>
-                <li>Red carpet / grass carpet</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
+    <!-- ============================================================
        VENUE ONLY
   ============================================================ -->
-  <section id="tab-venue" class="pkg-section tab-panel">
-    <div class="container">
+    <section id="tab-venue" class="pkg-section tab-panel">
+        <div class="container">
 
-      <div class="pkg-category-intro">
-        <h2>Venue Only Rates</h2>
-        <p>Prefer to bring your own suppliers? Choose your ideal space and customize every detail. Hall 1 accommodates up to 100 guests, Hall 2 for up to 150, and Bienvenido Hall for grand gatherings of up to 300.</p>
-      </div>
-
-      <div class="pkg-grid pkg-grid--3">
-
-        <!-- Hall 1 -->
-        <article class="pkg-card pkg-card--venue">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>40,000
+            <div class="pkg-category-intro">
+                <h2>Venue Only Rates</h2>
+                <p>Prefer to bring your own suppliers? Choose your ideal space and customize every detail. Hall 1 accommodates up to 100 guests, Hall 2 for up to 150, and Bienvenido Hall for grand gatherings of up to 300.</p>
             </div>
-            <div class="pkg-card__tag">Hall 1</div>
-          </div>
-          <div class="pkg-card__pax">Up to <strong>100 persons</strong></div>
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Inclusions
-              </h4>
-              <ul>
-                <li>5 hours use of Reception Hall</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>Pantry for food preps</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
 
-        <!-- Hall 2 -->
-        <article class="pkg-card pkg-card--venue pkg-card--featured">
-          <div class="pkg-card__badge">Popular</div>
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>45,000
-            </div>
-            <div class="pkg-card__tag">Hall 2</div>
-          </div>
-          <div class="pkg-card__pax">Up to <strong>150 persons</strong></div>
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Inclusions
-              </h4>
-              <ul>
-                <li>5 hours use of Reception Hall</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li>Pantry for food preps</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
+            <div class="pkg-grid pkg-grid--3">
 
-        <!-- Bienvenido Hall -->
-        <article class="pkg-card pkg-card--venue">
-          <div class="pkg-card__header">
-            <div class="pkg-card__price">
-              <span class="pkg-card__currency">₱</span>60,000
-            </div>
-            <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
-          </div>
-          <div class="pkg-card__pax">Up to <strong>300 persons</strong></div>
-          <div class="pkg-card__body">
-            <div class="pkg-section-block">
-              <h4 class="pkg-block-title">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg>
-                Inclusions
-              </h4>
-              <ul>
-                <li>5 hours use of Reception Hall</li>
-                <li>3 hrs Ingress / 2 hrs Egress</li>
-                <li><strong>1 Complimentary Bride Suite</strong></li>
-                <li>Pantry for food preps</li>
-                <li>VIP Secured Parking</li>
-                <li>Elevator Guest Access</li>
-                <li>Electricity (up to 40 amperes)</li>
-                <li>Back-up Generator</li>
-                <li>Security, Engineering &amp; Maintenance Staff</li>
-                <li>Complimentary WiFi</li>
-              </ul>
-            </div>
-          </div>
-          <div class="pkg-card__footer">
-            <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
-          </div>
-        </article>
+                <!-- Hall 1 -->
+                <article class="pkg-card pkg-card--venue">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>40,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 1</div>
+                    </div>
+                    <div class="pkg-card__pax">Up to <strong>100 persons</strong></div>
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Inclusions
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Reception Hall</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>Pantry for food preps</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
 
-      </div>
+                <!-- Hall 2 -->
+                <article class="pkg-card pkg-card--venue pkg-card--featured">
+                    <div class="pkg-card__badge">Popular</div>
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>45,000
+                        </div>
+                        <div class="pkg-card__tag">Hall 2</div>
+                    </div>
+                    <div class="pkg-card__pax">Up to <strong>150 persons</strong></div>
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Inclusions
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Reception Hall</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li>Pantry for food preps</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
 
-      <!-- Corkage Fees -->
-      <div class="corkage-box">
-        <h3>Bringing Your Own Suppliers?</h3>
-        <p>No problem! The following corkage fees apply when using external vendors:</p>
-        <div class="corkage-grid">
-          <div class="corkage-item">
-            <span class="corkage-item__label">Catering</span>
-            <span class="corkage-item__price">₱70 <em>per head</em></span>
-          </div>
-          <div class="corkage-item">
-            <span class="corkage-item__label">Basic Lights &amp; Sound</span>
-            <span class="corkage-item__price">₱2,000</span>
-          </div>
-          <div class="corkage-item">
-            <span class="corkage-item__label">LED Wall</span>
-            <span class="corkage-item__price">₱4,000</span>
-          </div>
-          <div class="corkage-item">
-            <span class="corkage-item__label">Kiosks using Electricity</span>
-            <span class="corkage-item__price">₱500</span>
-          </div>
+                <!-- Bienvenido Hall -->
+                <article class="pkg-card pkg-card--venue">
+                    <div class="pkg-card__header">
+                        <div class="pkg-card__price">
+                            <span class="pkg-card__currency">₱</span>60,000
+                        </div>
+                        <div class="pkg-card__tag pkg-card__tag--gold">Bienvenido Hall</div>
+                    </div>
+                    <div class="pkg-card__pax">Up to <strong>300 persons</strong></div>
+                    <div class="pkg-card__body">
+                        <div class="pkg-section-block">
+                            <h4 class="pkg-block-title">
+                                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10L10 3L17 10V18H13V13H7V18H3V10Z"/></svg> Inclusions
+                            </h4>
+                            <ul>
+                                <li>5 hours use of Reception Hall</li>
+                                <li>3 hrs Ingress / 2 hrs Egress</li>
+                                <li><strong>1 Complimentary Bride Suite</strong></li>
+                                <li>Pantry for food preps</li>
+                                <li>VIP Secured Parking</li>
+                                <li>Elevator Guest Access</li>
+                                <li>Electricity (up to 40 amperes)</li>
+                                <li>Back-up Generator</li>
+                                <li>Security, Engineering &amp; Maintenance Staff</li>
+                                <li>Complimentary WiFi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pkg-card__footer">
+                        <a href="contact.html" class="btn btn--primary btn--full">Inquire Now</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Corkage Fees -->
+            <div class="corkage-box">
+                <h3>Bringing Your Own Suppliers?</h3>
+                <p>No problem! The following corkage fees apply when using external vendors:</p>
+                <div class="corkage-grid">
+                    <div class="corkage-item">
+                        <span class="corkage-item__label">Catering</span>
+                        <span class="corkage-item__price">₱70 <em>per head</em></span>
+                    </div>
+                    <div class="corkage-item">
+                        <span class="corkage-item__label">Basic Lights &amp; Sound</span>
+                        <span class="corkage-item__price">₱2,000</span>
+                    </div>
+                    <div class="corkage-item">
+                        <span class="corkage-item__label">LED Wall</span>
+                        <span class="corkage-item__price">₱4,000</span>
+                    </div>
+                    <div class="corkage-item">
+                        <span class="corkage-item__label">Kiosks using Electricity</span>
+                        <span class="corkage-item__price">₱500</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- CTA STRIP -->
+    <section class="pkg-cta">
+        <div class="container pkg-cta__inner">
+            <div>
+                <h2>Ready to Book Your Date?</h2>
+                <p>Contact our team and let's start planning your perfect event.</p>
+            </div>
+            <div class="pkg-cta__actions">
+                <a href="contact.html" class="btn btn--primary">Send an Inquiry</a>
+                <a href="tel:+63275071662" class="btn btn--ghost">Call +63 2 7507 1662</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- CTA STRIP -->
-  <section class="pkg-cta">
-    <div class="container pkg-cta__inner">
-      <div>
-        <h2>Ready to Book Your Date?</h2>
-        <p>Contact our team and let's start planning your perfect event.</p>
-      </div>
-      <div class="pkg-cta__actions">
-        <a href="contact.html" class="btn btn--primary">Send an Inquiry</a>
-        <a href="tel:+63275071662" class="btn btn--ghost">Call +63 2 7507 1662</a>
-      </div>
-    </div>
-  </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer__grid">
+            <div class="footer__brand">
+                <a href="index.html" class="nav__logo">
+                    <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img nav__logo-img--footer" />
+                </a>
+                <p>Rizal's premier upscale event destination — where every celebration becomes a cherished memory.</p>
+                <a href="https://www.facebook.com/PonderosaEventsPlace" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                </a>
+            </div>
+            <div class="footer__links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#venues">Venues &amp; Halls</a></li>
+                    <li><a href="packages.html">Packages &amp; Rates</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="contact.html">Contact &amp; Booking</a></li>
+                </ul>
+            </div>
+            <div class="footer__contact">
+                <h4>Contact Us</h4>
+                <p>113 Manila East Road, Tagpos<br />Binangonan, Rizal, Philippines</p>
+                <p><a href="tel:+63275071662">+63 2 7507 1662</a></p>
+                <p><a href="mailto:info@ponderosaeventsplace.com">info@ponderosaeventsplace.com</a></p>
+                <p>Mon–Fri: 9:00 AM – 5:00 PM<br />Saturday: 9:00 AM – 1:00 PM</p>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>&copy; <span id="year"></span> Ponderosa Events Place. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <a href="index.html" class="nav__logo">
-          <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img nav__logo-img--footer" />
-        </a>
-        <p>Rizal's premier upscale event destination — where every celebration becomes a cherished memory.</p>
-        <a href="https://www.facebook.com/PonderosaEventsPlace" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg class="footer__social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        </a>
-      </div>
-      <div class="footer__links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html#about">About Us</a></li>
-          <li><a href="index.html#venues">Venues &amp; Halls</a></li>
-          <li><a href="packages.html">Packages &amp; Rates</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
-          <li><a href="contact.html">Contact &amp; Booking</a></li>
-        </ul>
-      </div>
-      <div class="footer__contact">
-        <h4>Contact Us</h4>
-        <p>113 Manila East Road, Tagpos<br />Binangonan, Rizal, Philippines</p>
-        <p><a href="tel:+63275071662">+63 2 7507 1662</a></p>
-        <p><a href="mailto:info@ponderosaeventsplace.com">info@ponderosaeventsplace.com</a></p>
-        <p>Mon–Fri: 9:00 AM – 5:00 PM<br />Saturday: 9:00 AM – 1:00 PM</p>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <p>&copy; <span id="year"></span> Ponderosa Events Place. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
-  <script src="packages.js"></script>
+    <script src="main.js"></script>
+    <script src="packages.js"></script>
 </body>
+
 </html>
