@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found – Ponderosa Events Place</title>
+  <link rel="icon" type="image/x-icon" href="img/logo.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .error-page {
+      min-height: 100svh;
+      background: var(--clr-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative background number */
+    .error-page__bg-num {
+      position: absolute;
+      font-family: var(--font-serif);
+      font-size: clamp(18rem, 40vw, 32rem);
+      font-weight: 600;
+      color: rgba(184, 151, 90, 0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.04em;
+    }
+
+    .error-page__content {
+      position: relative;
+      z-index: 1;
+      max-width: 560px;
+    }
+
+    .error-page__label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clr-gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .error-page__code {
+      font-family: var(--font-serif);
+      font-size: clamp(5rem, 18vw, 10rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--clr-white);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .error-page__code em {
+      font-style: italic;
+      color: var(--clr-gold-light);
+    }
+
+    .error-page__divider {
+      width: 48px;
+      height: 1px;
+      background: var(--clr-gold);
+      margin: 1.75rem auto;
+      opacity: 0.5;
+    }
+
+    .error-page__title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 400;
+      color: var(--clr-white);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .error-page__desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .error-page__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Subtle animated gold line at bottom */
+    .error-page::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header id="site-header" class="scrolled">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img" />
+      </a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#venues">Venues</a></li>
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="contact.html" class="nav__cta">Book Now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="error-page">
+    <div class="error-page__bg-num">404</div>
+    <div class="error-page__content">
+      <span class="error-page__label">Oops — Page Not Found</span>
+      <div class="error-page__code">4<em>0</em>4</div>
+      <div class="error-page__divider"></div>
+      <h1 class="error-page__title">This page seems to have left the venue</h1>
+      <p class="error-page__desc">
+        The page you're looking for may have been moved, renamed, or doesn't exist.
+        Let us guide you back to where the celebration is.
+      </p>
+      <div class="error-page__actions">
+        <a href="index.html" class="btn btn--primary">Back to Home</a>
+        <a href="contact.html" class="btn btn--ghost">Contact Us</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
