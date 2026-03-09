@@ -231,7 +231,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=85') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=75') center/cover no-repeat;
+}
+@media (min-width: 769px) {
+  .hero {
+    background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=85');
+  }
 }
 .hero__overlay {
   position: absolute;

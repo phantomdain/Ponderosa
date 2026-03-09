@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a1612" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-17CHD4LREY"></script>
     <script>
@@ -11,8 +14,6 @@
 
     gtag('config', 'G-17CHD4LREY');
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ponderosa Events Place – Binangonan, Rizal</title>
     <meta name="description" content="Ponderosa Events Place is an upscale wedding and events venue in Binangonan, Rizal. Perfect for weddings, debuts, birthdays, corporate events, and special celebrations.">
     <meta name="keywords" content="events place Rizal, wedding venue Rizal, debut venue Rizal, event venue Binangonan, birthday venue Rizal, corporate events Rizal, air-conditioned event halls Rizal, event packages Rizal, elegant event venue Rizal, premier events place Binangonan">
@@ -20,13 +21,23 @@
     <meta property="og:title" content="Ponderosa Events Place – Premier Events Venue in Rizal">
     <meta property="og:description" content="Host unforgettable weddings, debuts, birthdays, and corporate events at Ponderosa Events Place in Binangonan, Rizal.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="img/gallery/470576353_1201450798073996_7292165286709728899_n.jpg">
+    <meta property="og:image" content="https://ponderosaeventsplace.com/img/gallery/470576353_1201450798073996_7292165286709728899_n.jpg">
     <meta property="og:url" content="https://ponderosaeventsplace.com/" />
 
+    <!-- Favicon & touch icons -->
+    <link rel="icon" type="image/x-icon" href="img/logo.ico" />
+    <link rel="apple-touch-icon" href="img/logo.png" />
+
+    <!-- Preconnect to font & image CDNs -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+
+    <!-- Preload hero background image (LCP) -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=75" media="(max-width: 768px)" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1519741497674-611481863552?w=1600&q=85" media="(min-width: 769px)" fetchpriority="high" />
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="img/logo.ico" />
     <link rel="stylesheet" href="styles.css" />
 
     <script type="application/ld+json">
@@ -110,7 +121,7 @@
     <header id="site-header" class="scrolled">
         <nav class="nav container">
             <a href="#hero" class="nav__logo">
-                <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img" />
+                <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img" width="144" height="42" decoding="async" />
             </a>
             <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -156,7 +167,7 @@
         <div class="container about__grid">
             <div class="about__media">
                 <div class="about__img-frame">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80" alt="Elegant event hall at Ponderosa Events Place" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80" alt="Elegant event hall at Ponderosa Events Place" loading="lazy" decoding="async" />
                     <div class="about__img-accent"></div>
                 </div>
             </div>
@@ -208,7 +219,7 @@
                 <!-- Bienvenido Hall -->
                 <article class="venue-card venue-card--featured">
                     <div class="venue-card__img-wrap">
-                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Bienvenido Hall – Ponderosa Events Place" loading="lazy" />
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" alt="Bienvenido Hall – Ponderosa Events Place" loading="lazy" decoding="async" />
                         <span class="venue-card__badge">Featured Hall</span>
                     </div>
                     <div class="venue-card__body">
@@ -233,9 +244,9 @@
                     <div class="venue-card__img-wrap">
                         <div class="venue-carousel" data-carousel>
                             <div class="venue-carousel__track">
-                                <img src="img/hall1-1.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" />
-                                <img src="img/hall1-2.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" />
-                                <img src="img/hall1-3.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" />
+                                <img src="img/hall1-1.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" decoding="async" />
+                                <img src="img/hall1-2.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" decoding="async" />
+                                <img src="img/hall1-3.jpg" alt="Hall 1 – Ponderosa Events Place" loading="lazy" decoding="async" />
                             </div>
                             <button class="venue-carousel__btn venue-carousel__btn--prev" aria-label="Previous image">&#8249;</button>
                             <button class="venue-carousel__btn venue-carousel__btn--next" aria-label="Next image">&#8250;</button>
@@ -266,9 +277,9 @@
                     <div class="venue-card__img-wrap">
                         <div class="venue-carousel" data-carousel>
                             <div class="venue-carousel__track">
-                                <img src="img/hall2-1.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" />
-                                <img src="img/hall2-2.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" />
-                                <img src="img/hall2-3.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" />
+                                <img src="img/hall2-1.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" decoding="async" />
+                                <img src="img/hall2-2.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" decoding="async" />
+                                <img src="img/hall2-3.jpg" alt="Hall 2 – Ponderosa Events Place" loading="lazy" decoding="async" />
                             </div>
                             <button class="venue-carousel__btn venue-carousel__btn--prev" aria-label="Previous image">&#8249;</button>
                             <button class="venue-carousel__btn venue-carousel__btn--next" aria-label="Next image">&#8250;</button>
@@ -398,15 +409,15 @@
             </div>
         </div>
         <div class="gallery__masonry" id="gallery-grid">
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE00237-1.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE00974-3.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE04847.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE06002.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE06595.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE07087.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE07220.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE07289.jpg" alt="Ponderosa Events Place" /></div>
-            <div class="gallery__mason-item"><img src="img/gallery/ZVE07541.jpg" alt="Ponderosa Events Place" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE00237-1.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE00974-3.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE04847.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE06002.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE06595.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE07087.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE07220.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE07289.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
+            <div class="gallery__mason-item"><img src="img/gallery/ZVE07541.jpg" alt="Ponderosa Events Place" loading="lazy" decoding="async" /></div>
         </div>
     </section>
 
@@ -494,7 +505,7 @@
         <div class="container footer__grid">
             <div class="footer__brand">
                 <a href="#hero" class="nav__logo">
-                    <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img nav__logo-img--footer" />
+                    <img src="img/logo.svg" alt="Ponderosa Events Place" class="nav__logo-img nav__logo-img--footer" width="165" height="48" decoding="async" loading="lazy" decoding="async" />
                 </a>
                 <p>Rizal's premier upscale event destination — where every celebration becomes a cherished memory.</p>
                 <a href="https://www.facebook.com/PonderosaEventsPlace" target="_blank" rel="noopener" aria-label="Facebook">
