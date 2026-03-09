@@ -967,6 +967,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .lightbox__img {
   max-width: min(90vw, 1200px);
   max-height: 88vh;
+  aspect-ratio: auto 640 / 360;
   object-fit: contain;
   border-radius: var(--radius);
   display: block;
