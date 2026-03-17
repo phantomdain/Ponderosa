@@ -37,3 +37,27 @@ if (hash) {
   const matchTab = document.querySelector(`.pkg-tab[data-tab="${hash}"]`);
   if (matchTab) matchTab.click();
 }
+
+// ── Mobile accordion for package cards ──────────────────────────
+(function initPkgAccordion() {
+  const chevronSVG = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 8 10 13 15 8"/></svg>';
+
+  document.querySelectorAll('.pkg-card').forEach(card => {
+    const pax = card.querySelector('.pkg-card__pax');
+    const body = card.querySelector('.pkg-card__body');
+    if (!pax || !body) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'pkg-card__toggle';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = `<span class="pkg-toggle-text"></span>${chevronSVG}`;
+
+    btn.addEventListener('click', () => {
+      const expanded = card.classList.toggle('pkg-card--expanded');
+      btn.setAttribute('aria-expanded', expanded);
+    });
+
+    // Insert toggle after pax, before body
+    pax.after(btn);
+  });
+})();
