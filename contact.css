@@ -110,17 +110,17 @@
 .avail__fields--simple .form-group {
   margin-bottom: 0;
 }
-.btn.avail__btn {
+.avail__btn {
   align-self: end;
   height: 48px;
 }
 .avail__result {
   margin-top: 1.5rem;
-  padding: 1.25rem 1.5rem;
+  padding: 0.85rem 1.25rem;
   border-radius: var(--radius);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   animation: availFadeIn 0.35s ease;
 }
 @keyframes availFadeIn {
@@ -128,8 +128,8 @@
   to { opacity: 1; transform: translateY(0); }
 }
 .avail__result svg {
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 .avail__result-body {
@@ -137,9 +137,9 @@
 }
 .avail__result-title {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
 }
 .avail__result-sub {
   font-size: 0.82rem;
