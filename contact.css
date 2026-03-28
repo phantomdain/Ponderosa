@@ -110,7 +110,7 @@
 .avail__fields--simple .form-group {
   margin-bottom: 0;
 }
-.avail__btn {
+.btn.avail__btn {
   align-self: end;
   height: 48px;
   margin-bottom: 17px;
