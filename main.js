@@ -187,6 +187,31 @@ const galleryImages = [
 // Shared shuffle: first 9 go to gallery, 10th and 11th to section images
 const shuffledPool = [...galleryImages].sort(() => Math.random() - 0.5);
 
+// ── Hero background slideshow ────────────────────────────────────
+(function heroSlideshow() {
+  const container = document.querySelector('.hero__slides');
+  if (!container) return;
+
+  const images = [...galleryImages].sort(() => Math.random() - 0.5);
+
+  images.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'hero__slide';
+    if (i === 0) slide.classList.add('active');
+    slide.style.backgroundImage = `url('${src}')`;
+    container.appendChild(slide);
+  });
+
+  const slides = container.querySelectorAll('.hero__slide');
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 5000);
+})();
+
 // ── Section images (About + Bienvenido) ──────────────────────────
 (function randomSectionImages() {
   function fadeImg(img, src) {

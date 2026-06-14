@@ -1028,3 +1028,67 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── Wedding Experience Promo Banner ─────────────────────────── */
+.wedding-promo {
+  background: linear-gradient(135deg, #1a1612 0%, #2a1e14 50%, #1a1612 100%);
+  border-top: 1px solid rgba(184, 151, 90, 0.25);
+  border-bottom: 1px solid rgba(184, 151, 90, 0.25);
+  padding-block: clamp(3rem, 5vw, 4.5rem);
+  position: relative;
+  overflow: hidden;
+}
+.wedding-promo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(184, 151, 90, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.wedding-promo__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.wedding-promo__text {
+  flex: 1;
+}
+.wedding-promo__label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-bottom: 0.75rem;
+}
+.wedding-promo__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--clr-white);
+  margin-bottom: 0.85rem;
+}
+.wedding-promo__title em {
+  font-style: italic;
+  color: var(--clr-gold-light);
+}
+.wedding-promo__desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 560px;
+  line-height: 1.75;
+}
+.wedding-promo__cta {
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .wedding-promo__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wedding-promo__cta {
+    align-self: flex-start;
+  }
+}
