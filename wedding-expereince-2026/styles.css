@@ -1,0 +1,1182 @@
+/* ==========================================================================
+   PONDEROSA WEDDING EXPERIENCE DAY — Stylesheet
+   ==========================================================================
+
+   TABLE OF CONTENTS
+   1.  CSS Variables (Brand Colours & Tokens)
+   2.  Reset & Base
+   3.  Navigation
+   4.  Hero
+   5.  Shared Section Styles
+   6.  Event Details
+   7.  Experience + Card Photos
+   8.  Mood Banner
+   9.  RSVP + Form
+   10. FAQ
+   11. Footer
+   12. Animations
+   13. Responsive Breakpoints
+       — Laptop  (max-width: 900px)
+       — Tablet  (max-width: 768px)
+       — Mobile  (max-width: 480px)
+
+========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS VARIABLES
+   --------------------------------------------------------------------------
+   Brand palette — Ponderosa Brand Style Guide
+   Primary:   --brown  #6D330D  ·  --gold   #B99618
+   Secondary: --beige  #EDE4C2  ·  --red    #AA1E1E
+   Neutral:   --black  #333333  ·  --white  #F2F2F2
+
+   Contrast notes (WCAG AA: 4.5:1 body text, 3:1 large text)
+   · --brown  on --white:       8.7:1  ✓ AAA
+   · --black  on --white:      11.4:1  ✓ AAA
+   · --gold   on --white:       2.4:1  ✗ decorative / large text only
+   · --gold   on --brown:       3.6:1  ✓ large text AA
+   · --red    on --white:       6.2:1  ✓ AA
+   · --beige  on --brown:      ~8.0:1  ✓ AAA
+   · --gold-dark on --white: ~4.6:1   ✓ AA (small gold text)
+
+   Typography — Brand specifies:
+   · Heading: Poor Richard  (not on Google Fonts — Playfair Display used as substitute)
+   · Body:    SF Pro Display (Apple system font — falls back via system-ui stack)
+========================================================================== */
+
+:root {
+  /* ── Brand Core Colours ─────────────────────────────── */
+  --brown:        #6D330D;
+  --gold:         #B99618;
+  --beige:        #EDE4C2;
+  --red:          #AA1E1E;
+  --black:        #333333;
+  --white:        #F2F2F2;
+
+  /* ── Derived / Extended Palette ─────────────────────── */
+  --cream:        #F5EDD8;
+  --gold-dark:    #7A6410;   /* AA-compliant for small text on light bg */
+  --gold-light:   #EDE4C2;   /* alias for --beige */
+  --brown-mid:    #8B5E2A;
+  --brown-light:  #A07850;
+  --border:       #D8CBA0;
+  --warm-white:   #F2F2F2;
+
+  /* ── Typography ─────────────────────────────────────── */
+  --font-serif:   'Playfair Display', serif;
+  --font-alt:     'Cormorant Garamond', serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+                  'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Layout ─────────────────────────────────────────── */
+  --max-width:              1100px;
+  --section-padding:        6rem 2rem;
+  --section-padding-mobile: 4rem 1.2rem;
+
+  /* ── Motion ─────────────────────────────────────────── */
+  --transition-fast: 0.2s ease;
+  --transition-mid:  0.25s ease;
+}
+
+
+/* ==========================================================================
+   2. RESET & BASE
+========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   3. NAVIGATION
+========================================================================== */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 4rem;
+  background: rgba(245, 237, 216, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  transition: padding var(--transition-fast);
+}
+
+.nav-logo {
+  display: block;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-mid);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--brown);
+}
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--gold);
+  color: var(--brown);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.nav-cta:hover {
+  background: var(--brown);
+  border-color: var(--brown);
+  color: var(--white);
+}
+
+
+/* ==========================================================================
+   4. HERO
+   --------------------------------------------------------------------------
+   Background: Unsplash photo with warm dark overlay.
+   All text is set to light values (beige/white/gold) for contrast over photo.
+   Photo credit: Unsplash — photo-1469371670807-013ccf25f16a
+========================================================================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    url('assets/ZVE05534.jpg')
+    center / cover no-repeat;
+}
+
+/* Dark warm overlay so text is readable over the photo */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 18, 6, 0.58);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 8rem 1rem 4rem;
+}
+
+.hero-ornament {
+  font-size: 1.4rem;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--beige);
+  opacity: 0.75;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--beige);
+  margin-bottom: 0.3rem;
+}
+
+.hero h1 em {
+  display: block;
+  font-style: italic;
+  color: var(--gold);       /* gold on dark → 3.6:1, large heading ✓ */
+}
+
+.hero-tagline {
+  font-family: var(--font-alt);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: rgba(237, 228, 194, 0.8);
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: fit-content;
+}
+
+.hero-divider span {
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+}
+
+.hero-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.hero-date {
+  font-family: var(--font-alt);
+  font-size: calc(4vw + 1vh + 2vmin);
+  color: var(--beige);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.hero-venue {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(237, 228, 194, 0.6);
+  margin-bottom: 3rem;
+}
+
+/* ── Hero Buttons ── */
+
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.8rem;
+  background: var(--gold);
+  color: var(--black);        /* dark text on gold → 4.8:1 ✓ AA */
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+              color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--brown);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.8rem;
+  background: transparent;
+  color: var(--beige);        /* light text for dark hero bg */
+  text-decoration: none;
+  border: 1px solid rgba(237, 228, 194, 0.6);
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(237, 228, 194, 0.15);
+  border-color: var(--beige);
+  transform: translateY(-1px);
+}
+
+/* ── Scroll indicator ── */
+
+.hero-scroll {
+  position: absolute;
+  bottom: 1vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.45;
+}
+
+.hero-scroll span {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--beige);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+
+/* ==========================================================================
+   5. SHARED SECTION STYLES
+========================================================================== */
+
+section {
+  padding: var(--section-padding);
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold-dark);    /* darkened gold → 4.6:1 on cream ✓ AA */
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  text-align: center;
+  color: var(--brown);
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--red);          /* brand red → 6.2:1 on white ✓ AA */
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--brown-light);
+  font-size: 1rem;
+  max-width: 540px;
+  margin: 0 auto 3.5rem;
+}
+
+.ornament-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.2rem auto 3rem;
+  width: fit-content;
+}
+
+.ornament-line span {
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: var(--border);
+}
+
+.ornament-line .dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+
+/* ==========================================================================
+   6. EVENT DETAILS
+========================================================================== */
+
+#details {
+  background: var(--white);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+}
+
+.detail-card {
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  transition: background var(--transition-fast);
+}
+
+.detail-card:last-child {
+  border-right: none;
+}
+
+.detail-card:hover {
+  background: var(--cream);
+}
+
+.detail-icon {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.detail-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 0.6rem;
+}
+
+.detail-value {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--brown);
+  line-height: 1.4;
+}
+
+.detail-sub {
+  font-size: 0.82rem;
+  color: var(--brown-light);
+  margin-top: 0.3rem;
+}
+
+
+/* ==========================================================================
+   7. EXPERIENCE + CARD PHOTOS
+   --------------------------------------------------------------------------
+   Card photos: images pull edge-to-edge across the card top, then text below.
+   Unsplash photos credited per card.
+========================================================================== */
+
+#experience {
+  background: var(--cream);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.experience-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(109, 51, 13, 0.10);
+}
+
+/* Photo thumbnail at top of each card */
+.card-photo {
+  display: block;
+  margin: 0;
+  height: 180px;
+  overflow: hidden;
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.experience-card:hover .card-photo img {
+  transform: scale(1.04);
+}
+
+/* Card text content */
+.experience-card .experience-num,
+.experience-card .experience-title,
+.experience-card .experience-desc {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.experience-num {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  color: var(--gold-dark);
+  line-height: 1;
+  padding-top: 1.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.experience-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--brown);
+  margin-bottom: 0.6rem;
+}
+
+.experience-desc {
+  font-size: 0.87rem;
+  color: var(--brown-light);
+  line-height: 1.75;
+  padding-bottom: 2rem;
+}
+
+.experience-note {
+  text-align: center;
+  margin-top: 1rem;
+  font-family: var(--font-alt);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--brown-light);
+}
+
+
+/* ==========================================================================
+   8. MOOD BANNER
+   --------------------------------------------------------------------------
+   Full-width parallax image break with centered pull quote.
+   Photo credit: Unsplash — photo-1465495976277-4387d4b0b4c6
+========================================================================== */
+
+
+/* ==========================================================================
+   PARTNERS
+========================================================================== */
+
+#partners {
+  background: var(--white);
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: center;
+}
+
+.partner-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: var(--white);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.partner-logo:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.partner-logo img {
+  max-height: 80px;
+  max-width: 140px;
+  width: 100%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0);
+  opacity: 0.55;
+  transition: opacity var(--transition-fast), filter var(--transition-fast);
+}
+
+.partner-logo:hover img {
+  opacity: 0.85;
+  filter: grayscale(1) brightness(0.2);
+}
+
+
+.mood-banner {
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  background:
+    url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1920&q=80')
+    center / cover no-repeat fixed;
+}
+
+.mood-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(44, 18, 6, 0.50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.mood-quote {
+  font-family: var(--font-alt);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--beige);
+  text-align: center;
+  max-width: 680px;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+
+/* ==========================================================================
+   9. RSVP + FORM
+========================================================================== */
+
+#rsvp {
+  background: var(--brown);
+  position: relative;
+  overflow: hidden;
+}
+
+#rsvp::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 40% 50% at 5% 50%,  rgba(185, 150, 24, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 40% at 95% 20%, rgba(237, 228, 194, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#rsvp .section-label    { color: var(--beige); opacity: 0.7; }
+#rsvp .section-title    { color: var(--beige); }
+#rsvp .section-title em { color: var(--white); }
+#rsvp .section-subtitle { color: var(--brown-light); max-width: 480px; }
+
+/* ── Two-column layout ── */
+
+.rsvp-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ── Summary column ── */
+
+.rsvp-summary {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.rsvp-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rsvp-price {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  color: var(--beige);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+.rsvp-per {
+  font-size: 0.8rem;
+  color: var(--brown-light);
+  margin-bottom: 1.8rem;
+}
+
+.rsvp-features {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.rsvp-features li {
+  font-size: 0.87rem;
+  color: var(--beige);
+  opacity: 0.78;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(237, 228, 194, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rsvp-features li:first-child {
+  border-top: 1px solid rgba(237, 228, 194, 0.1);
+}
+
+.rsvp-features li::before {
+  content: '✦';
+  color: var(--gold);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
+.rsvp-note {
+  font-family: var(--font-alt);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(237, 228, 194, 0.38);
+}
+
+/* ── Form column ── */
+
+.rsvp-form-wrapper {
+  background: rgba(237, 228, 194, 0.05);
+  border: 1px solid rgba(185, 150, 24, 0.3);
+  padding: 2.5rem;
+}
+
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--beige);
+  opacity: 0.65;
+}
+
+.form-group input {
+  background: rgba(237, 228, 194, 0.07);
+  border: 1px solid rgba(185, 150, 24, 0.3);
+  color: var(--beige);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  width: 100%;
+  outline: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+.form-group input::placeholder {
+  color: rgba(237, 228, 194, 0.28);
+}
+
+.form-group input:focus {
+  border-color: var(--gold);
+  background: rgba(237, 228, 194, 0.12);
+}
+
+/* Date input — force light text on dark bg in Chrome */
+.form-group input[type="date"] {
+  color-scheme: dark;
+}
+
+.btn-rsvp {
+  display: block;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  background: var(--gold);
+  color: var(--black);        /* dark text on gold → 4.8:1 ✓ AA */
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  cursor: pointer;
+  margin-top: 0.4rem;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-rsvp:hover {
+  background: var(--beige);
+  border-color: var(--beige);
+  color: var(--brown);
+  transform: translateY(-1px);
+}
+
+/* ── Success state ── */
+
+.rsvp-success {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.success-ornament {
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.success-title {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--beige);
+  margin-bottom: 1rem;
+}
+
+.success-body {
+  font-size: 0.95rem;
+  color: var(--brown-light);
+  line-height: 1.8;
+}
+
+
+/* ==========================================================================
+   10. FAQ
+========================================================================== */
+
+#faq {
+  background: var(--white);
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--brown);
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--red);
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform var(--transition-mid);
+}
+
+details[open] .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  padding: 0 0 1.5rem;
+  color: var(--brown-light);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+
+/* ==========================================================================
+   11. FOOTER
+========================================================================== */
+
+footer {
+  background: var(--brown);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.footer-logo {
+  margin-bottom: 0.8rem;
+}
+
+.footer-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  filter: brightness(0) invert(1) opacity(0.6);
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.65;
+  margin-bottom: 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brown-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(237, 228, 194, 0.25);
+  border-top: 1px solid rgba(237, 228, 194, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+
+/* ==========================================================================
+   12. ANIMATIONS
+========================================================================== */
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50%       { opacity: 1;   }
+}
+
+
+/* ==========================================================================
+   13. RESPONSIVE BREAKPOINTS
+========================================================================== */
+
+/* ── Laptop (≤ 900px) ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+
+  /* Details: 2-column grid */
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .detail-card:nth-child(2) { border-right: none; }
+  .detail-card:nth-child(1),
+  .detail-card:nth-child(2) { border-bottom: 1px solid var(--border); }
+
+  /* Experience: 2-column grid */
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* RSVP: stack columns */
+  .rsvp-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Mood banner: disable fixed bg (Safari compatibility) */
+  .mood-banner {
+    background-attachment: scroll;
+  }
+}
+
+/* ── Tablet (≤ 768px) ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  section {
+    padding: var(--section-padding-mobile);
+  }
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  /* Details: single column */
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-card {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-card:last-child {
+    border-bottom: none;
+  }
+
+  /* Experience: single column */
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mood banner: shorter on tablet */
+  .mood-banner {
+    height: 300px;
+  }
+
+  /* RSVP form: reduce padding */
+  .rsvp-form-wrapper {
+    padding: 1.8rem;
+  }
+}
+
+/* ── Mobile (≤ 480px) ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .partner-logo {
+    padding: 1rem;
+  }
+
+  nav {
+    padding: 0.85rem 1.2rem;
+  }
+  .nav-logo img {
+    height: 30px;
+  }
+  .nav-cta {
+    font-size: 0.65rem;
+    padding: 0.45rem 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+  }
+  .hero-date {
+    font-size: 1.1rem;
+  }
+  .hero-venue {
+    font-size: 0.68rem;
+  }
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.85rem 1.8rem;
+    font-size: 0.7rem;
+  }
+
+  .mood-banner {
+    height: 240px;
+  }
+  .mood-quote {
+    font-size: 1.2rem;
+  }
+
+  .rsvp-price {
+    font-size: 3rem;
+  }
+  .rsvp-form-wrapper {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .footer-logo img {
+    height: 28px;
+  }
+}
