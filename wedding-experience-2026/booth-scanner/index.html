@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Booth Scanner</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --bg: #0a0f1e;
+      --surface: #111827;
+      --surface2: #1f2937;
+      --surface3: #374151;
+      --text: #f9fafb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── Header ── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px env(safe-area-inset-top, 0);
+      background: rgba(10, 15, 30, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-left h1 { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; }
+    .header-left .booth-tag {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .sync-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface2);
+      border-radius: 99px;
+      padding: 5px 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .sync-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      transition: background 0.3s;
+    }
+
+    .sync-dot.syncing { background: var(--warning); animation: blink 0.8s infinite; }
+    .sync-dot.offline { background: var(--error); }
+    .sync-dot.no-config { background: var(--surface3); }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      flex: 1;
+      padding: 11px 8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ── Views ── */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ── Scanner ── */
+    .scanner-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #canvas { display: none; }
+
+    .scan-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.4) 100%);
+    }
+
+    .scan-frame {
+      width: 62%;
+      height: 62%;
+      position: relative;
+    }
+
+    .scan-frame .corner {
+      position: absolute;
+      width: 26px;
+      height: 26px;
+    }
+
+    .scan-frame .corner.tl { top: -1px; left: -1px; border-top: 3px solid var(--primary); border-left: 3px solid var(--primary); border-radius: 4px 0 0 0; }
+    .scan-frame .corner.tr { top: -1px; right: -1px; border-top: 3px solid var(--primary); border-right: 3px solid var(--primary); border-radius: 0 4px 0 0; }
+    .scan-frame .corner.bl { bottom: -1px; left: -1px; border-bottom: 3px solid var(--primary); border-left: 3px solid var(--primary); border-radius: 0 0 0 4px; }
+    .scan-frame .corner.br { bottom: -1px; right: -1px; border-bottom: 3px solid var(--primary); border-right: 3px solid var(--primary); border-radius: 0 0 4px 0; }
+
+    .scan-frame .laser {
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), #60a5fa, var(--primary), transparent);
+      border-radius: 1px;
+      filter: blur(0.5px);
+      animation: sweep 2.4s ease-in-out infinite;
+    }
+
+    @keyframes sweep {
+      0%   { top: 8%; opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { top: 92%; opacity: 0; }
+    }
+
+    .scan-hint {
+      position: absolute;
+      bottom: 16px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.02em;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .status-bar .live-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      flex-shrink: 0;
+      animation: blink 2s infinite;
+    }
+
+    .status-bar .live-dot.idle { background: var(--text-muted); animation: none; }
+    .status-bar #scan-status { font-size: 13px; color: var(--text-muted); }
+
+    /* ── Guest Card Modal ── */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.75);
+      display: flex;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .modal-bg.open { opacity: 1; pointer-events: all; }
+
+    .guest-sheet {
+      width: 100%;
+      max-height: 85dvh;
+      background: var(--surface);
+      border-radius: 20px 20px 0 0;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+    }
+
+    .modal-bg.open .guest-sheet { transform: translateY(0); }
+
+    .sheet-handle {
+      width: 36px; height: 4px;
+      border-radius: 2px;
+      background: var(--surface3);
+      margin: 12px auto 0;
+    }
+
+    .sheet-body { padding: 20px 20px 24px; }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .result-badge.checked-in { background: rgba(34,197,94,0.15); color: #4ade80; }
+    .result-badge.duplicate   { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+    .guest-name {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .guest-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .fields-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .field-row { display: flex; flex-direction: column; gap: 2px; }
+
+    .field-key {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .field-val {
+      font-size: 15px;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border-radius: 13px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: opacity 0.15s, transform 0.1s;
+      user-select: none;
+    }
+
+    .btn:active { opacity: 0.75; transform: scale(0.98); }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-ghost { background: var(--surface2); color: var(--text); margin-top: 8px; }
+    .btn-danger { background: rgba(239,68,68,0.12); color: #f87171; margin-top: 8px; }
+
+    /* ── Session counter (scanner screen) ── */
+    .session-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .counter-num {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--primary);
+    }
+
+    .counter-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Setup ── */
+    .setup-view { padding: 20px 16px; }
+    .setup-section { margin-bottom: 28px; }
+    .setup-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .setup-section p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 14px; }
+
+    .form-field { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      color: var(--text);
+      font-size: 15px;
+      -webkit-appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus { outline: none; border-color: var(--primary); }
+
+    .step-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .step {
+      display: flex;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+    .step-text strong { color: var(--text); }
+
+    .code-block {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'Menlo', 'SF Mono', monospace;
+      font-size: 11px;
+      color: #c9d1d9;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: var(--surface3);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Setup screen on first launch ── */
+    .onboard-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+
+    .onboard-card {
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+    }
+
+    .onboard-icon { font-size: 64px; margin-bottom: 16px; }
+    .onboard-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .onboard-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+<!-- ── Onboarding (shown first time) ── -->
+<div class="onboard-overlay" id="onboard" style="display:none;">
+  <div class="onboard-card">
+    <div class="onboard-icon">🎫</div>
+    <div class="onboard-title">Booth Scanner</div>
+    <div class="onboard-sub">Track guests who visit your booth. Scan their QR badge and the data goes straight to Google Sheets.</div>
+    <div class="form-field">
+      <label class="form-label">Your booth / vendor name</label>
+      <input class="form-input" id="ob-booth" type="text" placeholder="e.g. Booth 12 — Acme Corp" style="text-align:center;" />
+    </div>
+    <div class="form-field" style="margin-top:10px;">
+      <label class="form-label">Google Sheets Webhook URL <span style="color:var(--text-muted)">(optional — set later)</span></label>
+      <input class="form-input" id="ob-webhook" type="url" placeholder="https://script.google.com/macros/s/..." style="text-align:center; font-size:13px;" />
+    </div>
+    <button class="btn btn-primary" style="margin-top:16px;" onclick="completeOnboard()">Get Started</button>
+  </div>
+</div>
+
+<!-- ── App Shell ── -->
+<div class="header">
+  <div class="header-left">
+    <h1>Booth Scanner</h1>
+    <div class="booth-tag" id="header-booth">Not configured</div>
+  </div>
+  <div class="sync-pill">
+    <div class="sync-dot no-config" id="sync-dot"></div>
+    <span id="sync-label">—</span>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" id="tab-scanner" onclick="showView('scanner', this)">📷 Scan</div>
+  <div class="tab" id="tab-setup" onclick="showView('setup', this)">⚙️ Setup</div>
+</div>
+
+<!-- ══ SCANNER VIEW ══ -->
+<div class="view active" id="view-scanner">
+  <div class="scanner-wrap">
+    <video id="video" playsinline autoplay muted></video>
+    <canvas id="canvas"></canvas>
+    <div class="scan-overlay">
+      <div class="scan-frame">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="laser"></div>
+      </div>
+    </div>
+    <div class="scan-hint">Point camera at a guest's QR badge</div>
+  </div>
+  <div class="status-bar">
+    <div class="live-dot idle" id="live-dot"></div>
+    <span id="scan-status">Initializing camera…</span>
+  </div>
+  <div class="session-counter">
+    <div class="counter-num" id="session-count">0</div>
+    <div class="counter-label">guests scanned<br>this session</div>
+  </div>
+</div>
+
+<!-- ══ SETUP VIEW ══ -->
+<div class="view" id="view-setup">
+  <div class="setup-view">
+
+    <div class="setup-section">
+      <h3>Booth Info</h3>
+      <div class="form-field">
+        <label class="form-label">Booth / Vendor Name</label>
+        <input class="form-input" id="input-booth" type="text" placeholder="e.g. Booth 12 — Acme Corp" />
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3>Google Sheets Sync</h3>
+      <p>Each scan is sent to your Google Sheet in real time. Paste your Apps Script web app URL below.</p>
+      <div class="form-field">
+        <label class="form-label">Webhook URL</label>
+        <input class="form-input" id="input-webhook" type="url" placeholder="https://script.google.com/macros/s/…" />
+      </div>
+      <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+    </div>
+
+    <div class="setup-section">
+      <h3>How to Set Up Google Sheets</h3>
+      <div class="step-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Create a new <strong>Google Sheet</strong>. Leave it blank — headers are added automatically on the first scan.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Open <strong>Extensions → Apps Script</strong> and replace all code with the script below. Click <strong>Save</strong>.</div>
+        </div>
+      </div>
+      <div class="code-block" id="gs-code-block">loading…</div>
+      <div class="step-list" style="margin-top:16px;">
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">Click <strong>Deploy → New deployment</strong>. Set type to <strong>Web app</strong>. Set "Who has access" to <strong>Anyone</strong>. Click <strong>Deploy</strong> and authorize when prompted.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">Copy the deployment URL and paste it in the <strong>Webhook URL</strong> field above. Save.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="setup-section">
+      <h3>Sync Status</h3>
+      <p>If a scan fails to reach Google Sheets (e.g. no internet), it is queued and can be retried here.</p>
+      <button class="btn btn-ghost" onclick="retryUnsynced()">☁️ Retry Queued Scans (<span id="unsynced-count">0</span>)</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ Guest Card Modal ══ -->
+<div class="modal-bg" id="modal-bg" onclick="handleModalBgClick(event)">
+  <div class="guest-sheet" id="guest-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-body" id="sheet-body"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+<script>
+/* ── Apps Script template ─────────────────────────────────────────── */
+const APPS_SCRIPT = `function doPost(e) {
+  try {
+    var ss   = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getActiveSheet();
+    var data  = JSON.parse(e.postData.contents);
+    var fieldKeys = data.fieldKeys || [];
+
+    // Write header row once
+    if (sheet.getLastRow() === 0) {
+      var headers = ['Timestamp', 'Booth'].concat(fieldKeys).concat(['Raw QR Data']);
+      sheet.appendRow(headers);
+      sheet.getRange(1, 1, 1, headers.length)
+           .setFontWeight('bold')
+           .setBackground('#1a73e8')
+           .setFontColor('#ffffff');
+      sheet.setFrozenRows(1);
+    }
+
+    var row = [data.timestamp, data.booth]
+              .concat(fieldKeys.map(function(k){ return data.fields[k] || ''; }))
+              .concat([data.raw]);
+    sheet.appendRow(row);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({success: true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch(err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({success: false, error: err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}`;
+
+document.getElementById('gs-code-block').textContent = APPS_SCRIPT;
+
+/* ── State ────────────────────────────────────────────────────────── */
+// pending: unsynced scans stored locally for retry — full data needed for retry payload
+// scannedRaws: in-memory Set for duplicate detection this session only (not persisted)
+let pending     = JSON.parse(localStorage.getItem('booth_pending')  || '[]');
+let settings    = JSON.parse(localStorage.getItem('booth_settings') || '{}');
+let scannedRaws = new Set(pending.map(s => s.raw));
+let sessionCount = 0;
+let onFirstLoad = !settings.boothName;
+
+let videoStream = null;
+let scanActive  = false;
+let cooldown    = false;
+
+/* ── Bootstrap ────────────────────────────────────────────────────── */
+applySettings();
+
+if (onFirstLoad) {
+  document.getElementById('onboard').style.display = 'flex';
+} else {
+  startCamera();
+}
+
+/* ── Onboarding ───────────────────────────────────────────────────── */
+function completeOnboard() {
+  const booth = document.getElementById('ob-booth').value.trim();
+  if (!booth) { showToast('Please enter your booth name'); return; }
+  settings.boothName  = booth;
+  settings.webhookUrl = document.getElementById('ob-webhook').value.trim();
+  persistSettings();
+  document.getElementById('onboard').style.display = 'none';
+  startCamera();
+}
+
+/* ── View switching ───────────────────────────────────────────────── */
+function showView(name, tabEl) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  tabEl.classList.add('active');
+  scanActive = (name === 'scanner');
+  if (name === 'scanner') startCamera();
+  if (name === 'setup') {
+    document.getElementById('input-booth').value   = settings.boothName   || '';
+    document.getElementById('input-webhook').value = settings.webhookUrl  || '';
+    document.getElementById('unsynced-count').textContent = pending.length;
+  }
+}
+
+/* ── Camera & QR loop ─────────────────────────────────────────────── */
+async function startCamera() {
+  if (videoStream) { scanActive = true; return; }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { ideal: 'environment' }, width: { ideal: 1920 }, height: { ideal: 1920 } }
+    });
+    videoStream = stream;
+    const video = document.getElementById('video');
+    video.srcObject = stream;
+    await video.play();
+    setStatus('active', 'Scanning…');
+    scanActive = true;
+    requestAnimationFrame(scanLoop);
+  } catch (err) {
+    setStatus('idle', 'Camera access denied — please allow camera and reload');
+  }
+}
+
+function scanLoop() {
+  const video  = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+
+  requestAnimationFrame(scanLoop);
+
+  if (!scanActive || video.readyState < video.HAVE_ENOUGH_DATA) return;
+  if (cooldown) return;
+
+  canvas.width  = video.videoWidth;
+  canvas.height = video.videoHeight;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  ctx.drawImage(video, 0, 0);
+
+  const img  = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const code = jsQR(img.data, img.width, img.height, { inversionAttempts: 'dontInvert' });
+
+  if (code) {
+    cooldown = true;
+    onDetected(code.data);
+    setTimeout(() => { cooldown = false; }, 3000);
+  }
+}
+
+/* ── Detection ────────────────────────────────────────────────────── */
+function onDetected(raw) {
+  if (navigator.vibrate) navigator.vibrate([60, 30, 60]);
+
+  const fields      = parseQR(raw);
+  const isDuplicate = scannedRaws.has(raw);
+  const scan        = { id: Date.now(), raw, fields, timestamp: new Date().toISOString(), synced: false };
+
+  scannedRaws.add(raw);
+  sessionCount++;
+  document.getElementById('session-count').textContent = sessionCount;
+
+  showGuestCard(scan, isDuplicate);
+  syncScan(scan);
+}
+
+/* ── QR parsing ───────────────────────────────────────────────────── */
+function parseQR(raw) {
+  /* 1. JSON object */
+  try {
+    const j = JSON.parse(raw);
+    if (j && typeof j === 'object' && !Array.isArray(j)) return j;
+  } catch {}
+
+  /* 2. key:value or key=value lines / comma / pipe separated */
+  if (/[:=]/.test(raw)) {
+    const fields = {};
+    raw.split(/[\n|,;]/).forEach(part => {
+      const m = part.match(/^([^:=]+)[:=](.+)$/);
+      if (m) fields[m[1].trim()] = m[2].trim();
+    });
+    if (Object.keys(fields).length) return fields;
+  }
+
+  /* 3. Plain URL — extract query params */
+  try {
+    const url = new URL(raw);
+    if (url.search) {
+      const p = {};
+      url.searchParams.forEach((v, k) => { p[k] = v; });
+      if (Object.keys(p).length) { p['URL'] = raw; return p; }
+    }
+  } catch {}
+
+  /* 4. Fallback */
+  return { 'QR Data': raw };
+}
+
+/* ── Guest card ───────────────────────────────────────────────────── */
+const NAME_KEYS    = ['name','Name','NAME','full_name','fullName','FullName','firstName','first_name','attendee_name','Attendee','guest','Guest'];
+const COMPANY_KEYS = ['company','Company','COMPANY','org','organization','Organisation','employer','Employer','booth','Booth'];
+
+function showGuestCard(scan, isDuplicate) {
+  const f    = scan.fields;
+  const name = NAME_KEYS.map(k => f[k]).find(v => v) || 'Guest';
+  const co   = COMPANY_KEYS.map(k => f[k]).find(v => v) || '';
+  const time = fmtTime(scan.timestamp);
+
+  let html = `
+    <div class="result-badge ${isDuplicate ? 'duplicate' : 'checked-in'}">
+      ${isDuplicate ? '⚠️ Already Scanned' : '✅ Checked In'}
+    </div>
+    <div class="guest-name">${esc(name)}</div>
+    ${co ? `<div class="guest-subtitle">${esc(co)}</div>` : ''}
+    <div class="divider"></div>
+    <div class="fields-grid">
+  `;
+
+  Object.entries(f).forEach(([k, v]) => {
+    html += `<div class="field-row">
+      <div class="field-key">${esc(k)}</div>
+      <div class="field-val">${esc(String(v))}</div>
+    </div>`;
+  });
+
+  html += `
+      <div class="field-row">
+        <div class="field-key">Scanned At</div>
+        <div class="field-val">${time}</div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="closeModal()">Continue Scanning</button>
+    ${isDuplicate ? `<button class="btn btn-ghost" onclick="closeModal()">Dismiss</button>` : ''}
+  `;
+
+  document.getElementById('sheet-body').innerHTML = html;
+  document.getElementById('modal-bg').classList.add('open');
+  scanActive = false;
+}
+
+function handleModalBgClick(e) {
+  if (e.target === document.getElementById('modal-bg')) closeModal();
+}
+
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+  scanActive = true;
+}
+
+
+/* ── Google Sheets sync ───────────────────────────────────────────── */
+async function syncScan(scan) {
+  const payload = {
+    timestamp : new Date(scan.timestamp).toLocaleString(),
+    booth     : settings.boothName || 'Unknown Booth',
+    raw       : scan.raw,
+    fields    : scan.fields,
+    fieldKeys : Object.keys(scan.fields)
+  };
+
+  if (!settings.webhookUrl) {
+    // Queue for when webhook is configured
+    pending.push(scan);
+    localStorage.setItem('booth_pending', JSON.stringify(pending));
+    return;
+  }
+
+  setSyncUI('syncing');
+
+  try {
+    await fetch(settings.webhookUrl, {
+      method  : 'POST',
+      mode    : 'no-cors',
+      headers : { 'Content-Type': 'text/plain' },
+      body    : JSON.stringify(payload)
+    });
+    setSyncUI('ready');
+    showToast('Logged to Google Sheets ☁️');
+  } catch {
+    pending.push(scan);
+    localStorage.setItem('booth_pending', JSON.stringify(pending));
+    setSyncUI('error');
+    showToast('No connection — queued for retry 📱');
+    setTimeout(() => setSyncUI('ready'), 4000);
+  }
+}
+
+async function retryUnsynced() {
+  if (!pending.length) { showToast('Nothing queued'); return; }
+  if (!settings.webhookUrl) { showToast('Set a Webhook URL first'); return; }
+  showToast(`Retrying ${pending.length} queued scan(s)…`);
+  const toRetry = [...pending];
+  pending.length = 0;
+  localStorage.setItem('booth_pending', JSON.stringify(pending));
+  for (const s of toRetry) await syncScan(s);
+  document.getElementById('unsynced-count').textContent = pending.length;
+}
+
+function setSyncUI(state) {
+  const dot   = document.getElementById('sync-dot');
+  const label = document.getElementById('sync-label');
+  dot.className = 'sync-dot';
+  if (!settings.webhookUrl) { dot.classList.add('no-config'); label.textContent = 'No sync'; return; }
+  if (state === 'syncing') { dot.classList.add('syncing'); label.textContent = 'Syncing…'; }
+  else if (state === 'error') { dot.classList.add('offline'); label.textContent = 'Error'; }
+  else { label.textContent = 'Synced'; }
+}
+
+/* ── Settings ─────────────────────────────────────────────────────── */
+function saveSettings() {
+  settings.boothName  = document.getElementById('input-booth').value.trim();
+  settings.webhookUrl = document.getElementById('input-webhook').value.trim();
+  persistSettings();
+  showToast('Settings saved');
+}
+
+function persistSettings() {
+  localStorage.setItem('booth_settings', JSON.stringify(settings));
+  applySettings();
+}
+
+function applySettings() {
+  document.getElementById('header-booth').textContent = settings.boothName || 'Not configured';
+  setSyncUI('ready');
+}
+
+
+/* ── Helpers ──────────────────────────────────────────────────────── */
+function setStatus(state, msg) {
+  const dot = document.getElementById('live-dot');
+  dot.className = 'live-dot' + (state === 'active' ? '' : ' idle');
+  document.getElementById('scan-status').textContent = msg;
+}
+
+function fmtTime(iso) {
+  return new Date(iso).toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit', hour12: true });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
