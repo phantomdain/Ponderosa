@@ -448,14 +448,10 @@
   <div class="onboard-card">
     <div class="onboard-icon">🎫</div>
     <div class="onboard-title">Booth Scanner</div>
-    <div class="onboard-sub">Track guests who visit your booth. Scan their QR badge and the data goes straight to Google Sheets.</div>
+    <div class="onboard-sub">Track guests who visit your booth. Scan their QR badge and the data is recorded automatically.</div>
     <div class="form-field">
       <label class="form-label">Your booth / vendor name</label>
       <input class="form-input" id="ob-booth" type="text" placeholder="e.g. Booth 12 — Acme Corp" style="text-align:center;" />
-    </div>
-    <div class="form-field" style="margin-top:10px;">
-      <label class="form-label">Google Sheets Webhook URL <span style="color:var(--text-muted)">(optional — set later)</span></label>
-      <input class="form-input" id="ob-webhook" type="url" placeholder="https://script.google.com/macros/s/..." style="text-align:center; font-size:13px;" />
     </div>
     <button class="btn btn-primary" style="margin-top:16px;" onclick="completeOnboard()">Get Started</button>
   </div>
@@ -510,50 +506,17 @@
 
     <div class="setup-section">
       <h3>Booth Info</h3>
+      <p>This name is recorded alongside every scan so all visits can be tracked per booth.</p>
       <div class="form-field">
         <label class="form-label">Booth / Vendor Name</label>
         <input class="form-input" id="input-booth" type="text" placeholder="e.g. Booth 12 — Acme Corp" />
       </div>
-    </div>
-
-    <div class="setup-section">
-      <h3>Google Sheets Sync</h3>
-      <p>Each scan is sent to your Google Sheet in real time. Paste your Apps Script web app URL below.</p>
-      <div class="form-field">
-        <label class="form-label">Webhook URL</label>
-        <input class="form-input" id="input-webhook" type="url" placeholder="https://script.google.com/macros/s/…" />
-      </div>
-      <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
-    </div>
-
-    <div class="setup-section">
-      <h3>How to Set Up Google Sheets</h3>
-      <div class="step-list">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-text">Create a new <strong>Google Sheet</strong>. Leave it blank — headers are added automatically on the first scan.</div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-text">Open <strong>Extensions → Apps Script</strong> and replace all code with the script below. Click <strong>Save</strong>.</div>
-        </div>
-      </div>
-      <div class="code-block" id="gs-code-block">loading…</div>
-      <div class="step-list" style="margin-top:16px;">
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-text">Click <strong>Deploy → New deployment</strong>. Set type to <strong>Web app</strong>. Set "Who has access" to <strong>Anyone</strong>. Click <strong>Deploy</strong> and authorize when prompted.</div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-text">Copy the deployment URL and paste it in the <strong>Webhook URL</strong> field above. Save.</div>
-        </div>
-      </div>
+      <button class="btn btn-primary" onclick="saveSettings()">Save</button>
     </div>
 
     <div class="setup-section">
       <h3>Sync Status</h3>
-      <p>If a scan fails to reach Google Sheets (e.g. no internet), it is queued and can be retried here.</p>
+      <p>If a scan fails to reach the server (e.g. no internet), it is queued and can be retried here.</p>
       <button class="btn btn-ghost" onclick="retryUnsynced()">☁️ Retry Queued Scans (<span id="unsynced-count">0</span>)</button>
     </div>
 
@@ -607,7 +570,8 @@ const APPS_SCRIPT = `function doPost(e) {
   }
 }`;
 
-document.getElementById('gs-code-block').textContent = APPS_SCRIPT;
+/* ── Webhook ──────────────────────────────────────────────────────── */
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyXUL0ImRNVqXHympPpRyzEj_bXkRmYK5xJtaZ04esUKlA3fjHZwaw7HFQErm1hd7Ip/exec';
 
 /* ── State ────────────────────────────────────────────────────────── */
 // pending: unsynced scans stored locally for retry — full data needed for retry payload
@@ -635,8 +599,7 @@ if (onFirstLoad) {
 function completeOnboard() {
   const booth = document.getElementById('ob-booth').value.trim();
   if (!booth) { showToast('Please enter your booth name'); return; }
-  settings.boothName  = booth;
-  settings.webhookUrl = document.getElementById('ob-webhook').value.trim();
+  settings.boothName = booth;
   persistSettings();
   document.getElementById('onboard').style.display = 'none';
   startCamera();
@@ -651,8 +614,7 @@ function showView(name, tabEl) {
   scanActive = (name === 'scanner');
   if (name === 'scanner') startCamera();
   if (name === 'setup') {
-    document.getElementById('input-booth').value   = settings.boothName   || '';
-    document.getElementById('input-webhook').value = settings.webhookUrl  || '';
+    document.getElementById('input-booth').value = settings.boothName || '';
     document.getElementById('unsynced-count').textContent = pending.length;
   }
 }
@@ -810,17 +772,10 @@ async function syncScan(scan) {
     fieldKeys : Object.keys(scan.fields)
   };
 
-  if (!settings.webhookUrl) {
-    // Queue for when webhook is configured
-    pending.push(scan);
-    localStorage.setItem('booth_pending', JSON.stringify(pending));
-    return;
-  }
-
   setSyncUI('syncing');
 
   try {
-    await fetch(settings.webhookUrl, {
+    await fetch(WEBHOOK_URL, {
       method  : 'POST',
       mode    : 'no-cors',
       headers : { 'Content-Type': 'text/plain' },
@@ -839,7 +794,6 @@ async function syncScan(scan) {
 
 async function retryUnsynced() {
   if (!pending.length) { showToast('Nothing queued'); return; }
-  if (!settings.webhookUrl) { showToast('Set a Webhook URL first'); return; }
   showToast(`Retrying ${pending.length} queued scan(s)…`);
   const toRetry = [...pending];
   pending.length = 0;
@@ -852,7 +806,6 @@ function setSyncUI(state) {
   const dot   = document.getElementById('sync-dot');
   const label = document.getElementById('sync-label');
   dot.className = 'sync-dot';
-  if (!settings.webhookUrl) { dot.classList.add('no-config'); label.textContent = 'No sync'; return; }
   if (state === 'syncing') { dot.classList.add('syncing'); label.textContent = 'Syncing…'; }
   else if (state === 'error') { dot.classList.add('offline'); label.textContent = 'Error'; }
   else { label.textContent = 'Synced'; }
@@ -860,10 +813,9 @@ function setSyncUI(state) {
 
 /* ── Settings ─────────────────────────────────────────────────────── */
 function saveSettings() {
-  settings.boothName  = document.getElementById('input-booth').value.trim();
-  settings.webhookUrl = document.getElementById('input-webhook').value.trim();
+  settings.boothName = document.getElementById('input-booth').value.trim();
   persistSettings();
-  showToast('Settings saved');
+  showToast('Booth name saved');
 }
 
 function persistSettings() {
